@@ -5,6 +5,7 @@
             <use :xlink:href="active_icon"></use>
         </svg>
         <span>{{label}}</span>
+
         </div>
     </div>
 </template>
