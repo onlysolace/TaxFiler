@@ -5,6 +5,10 @@
         <progress-bar></progress-bar>
       </div>
     </div>
+
+    <div class="row">
+      <component :is="active_panel"></component>
+    </div>
   </div>
 </template>
 
@@ -18,8 +22,11 @@ import ProgressBar from "./components/status/ProgressBar";
     ProgressBar,
     TaxProficiencyPanel
   },
-  data:{
-    theme:'minimalist'
+  data() {
+    return {
+      theme: 'minimalist',
+      active_panel: 'TaxProficiencyPanel'
+    }
   },
   methods:{
 
