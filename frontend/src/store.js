@@ -5,7 +5,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        key:'hello'
+        theme:'minimalist',
+        active_panel:'TaxProficiencyPanel'
     },
     mutations: {
 
