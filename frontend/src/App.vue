@@ -1,28 +1,45 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App2"/>
+  <div id="app" class="container">
+    <div class="row">
+      <div class="col">
+        <progress-bar></progress-bar>
+      </div>
+    </div>
+
+    <div class="row">
+      <component :is="active_panel"></component>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TaxProficiencyPanel from './components/panel/TaxProficiencyPanel';
+import ProgressBar from "./components/status/ProgressBar";
 
-export default {
+  export default {
   name: 'app',
   components: {
-    HelloWorld
+    ProgressBar,
+    TaxProficiencyPanel
+  },
+  data() {
+    return {
+      theme: 'minimalist',
+      active_panel: 'TaxProficiencyPanel'
+    }
+  },
+  methods:{
+
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  *{
+    box-sizing:border-box;
+  }
+  #app{
+    display:flex;
+    flex-direction:column;
+  }
 </style>
