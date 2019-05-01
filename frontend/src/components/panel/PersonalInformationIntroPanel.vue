@@ -9,15 +9,18 @@
 </template>
 
 <script>
+    import {panel_mixin} from "../../mixin";
+
     export default {
         name: "personal-information-intro-panel",
+        mixins:[panel_mixin],
         data(){
             return{
 
             }
         },
         computed:{
-            can_continue(){
+            is_completed(){
                 return true;
             }
         }

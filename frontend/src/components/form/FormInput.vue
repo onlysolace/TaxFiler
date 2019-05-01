@@ -4,7 +4,9 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">{{label}}</span>
             </div>
-            <input type="text" class="form-control" :placeholder="placeholder">
+            <input type="text" class="form-control" :placeholder="placeholder" :value="value"
+                    @change="$emit('input', $event.target.value)"
+            >
         </div>
     </div>
 </template>
@@ -14,7 +16,11 @@
         name: "form-input",
         props:{
             placeholder: String,
-            label: String
+            label: String,
+            value: String
+        },
+        methods:{
+
         }
     }
 </script>

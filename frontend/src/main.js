@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import store from './store'
-import {mapState} from 'vuex'
+import {mapState, mapGetters} from 'vuex'
 
 require('bootstrap/dist/js/bootstrap');
 require('bootstrap/dist/css/bootstrap-grid.css');
@@ -25,5 +25,11 @@ Vue.mixin({
 new Vue({
   render: h => h(App),
   store,
-  computed: mapState(['theme','active_panel_index','panels'])
+  computed:{
+    ...mapState(['theme','active_panel_index','panels']),
+    ...mapGetters(['active_panel_name'])
+  },
+  watch:{
+
+  }
 }).$mount('#app')

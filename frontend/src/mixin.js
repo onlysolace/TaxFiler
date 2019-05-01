@@ -5,10 +5,16 @@ var panel_mixin = {
         }
     },
     computed:{
-        active_panel_name(){
-            return this.$store.state.panels[this.$store.state.active_panel_index];
+
+    },
+    watch:{
+        is_completed:{
+            immediate:true,
+            handler(nv, ov){
+                this.$store.commit('update_panel_data',{panel: this.name, data:{is_completed:nv}});
+            }
         }
     }
-}
+};
 
 export {panel_mixin}
