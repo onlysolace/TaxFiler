@@ -1,9 +1,20 @@
-var resource_mixin = {
-    methods:{
-        resource(file_name){
-            return require('./assets/'+file_name);
+var panel_mixin = {
+    data(){
+        return{
+            name:this.$options._componentTag
+        }
+    },
+    computed:{
+
+    },
+    watch:{
+        is_completed:{
+            immediate:true,
+            handler(nv, ov){
+                this.$store.commit('update_panel_data',{panel: this.name, data:{is_completed:nv}});
+            }
         }
     }
-}
+};
 
-export {resource_mixin}
+export {panel_mixin}
