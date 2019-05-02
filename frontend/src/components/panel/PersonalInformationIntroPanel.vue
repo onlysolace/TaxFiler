@@ -28,5 +28,7 @@
 </script>
 
 <style scoped>
-
+    .panel{
+        user-select:none;
+    }
 </style>

@@ -26,5 +26,7 @@
 </script>
 
 <style scoped>
-
+    .input-group-prepend{
+        user-select:none;
+    }
 </style>

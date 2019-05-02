@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import store from './store'
+import router from './router'
 import {mapState, mapGetters} from 'vuex'
 
 require('bootstrap/dist/js/bootstrap');
@@ -25,6 +26,7 @@ Vue.mixin({
 new Vue({
   render: h => h(App),
   store,
+  router,
   computed:{
     ...mapState(['theme','active_panel_index','panels']),
     ...mapGetters(['active_panel_name'])
