@@ -24,7 +24,7 @@
                 <p class="mb-3 ml-0 mr-3 alert col-auto p-2" :class="{'alert-warning':$root.theme == 'bootstrap'}">
                     You currently have a file-lock in place. Unlock your account to proceed
                 </p>
-                <form-button type="warning" class="mb-3 col-auto p-2">unlock my account</form-button>
+                <a type="warning" class="mb-3 col-auto p-2">unlock my account</a>
             </div>
             <div v-else-if="has_filed" key="3" class="row no-gutters mt-3">
                 <p class="mb-3 ml-0 mr-3 alert col-auto p-2" :class="{'alert-info':$root.theme == 'bootstrap'}">
@@ -76,7 +76,7 @@
                 console.log('watching running');
                 axios.post('http://localhost:8080/account/taxstatus/query', {ssn: nv}).then(response => {
                     console.log(response);
-                    this.file_locked = response.data.tax_status.fileLocked;
+                    this.file_locked = response.data.file_locked;
                     this.has_filed = response.data.has_filed;
                 }).catch(error => {
                     this.ssn_not_found = true;
