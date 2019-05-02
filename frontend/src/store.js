@@ -8,7 +8,8 @@ export default new Vuex.Store({
         theme: 'bootstrap',
         active_panel_index: 0,
         panels: ['TaxProficiencyPanel', 'PersonalInformationIntroPanel', 'PersonalInformationPanel'],
-        panel_data: {}
+        panel_data: {},
+        ssn: ''
     },
     mutations: {
         next_panel(state) {
@@ -18,8 +19,10 @@ export default new Vuex.Store({
             state.active_panel_index--;
         },
         update_panel_data(state, payload) {
-          //  state.panel_data[payload.panel] = Object.assign(state.panel_data[payload.panel] || {}, payload.data);
             Vue.set(state.panel_data, payload.panel, Object.assign(state.panel_data[payload.panel] || {}, payload.data));
+        },
+        set_ssn(state, ssn) {
+            state.ssn = ssn;
         }
     },
     actions: {},
