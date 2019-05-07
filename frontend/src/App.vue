@@ -2,13 +2,14 @@
     <div id="app" class="container">
         <transition :name="app_transition">
             <router-view :app_transition.sync="app_transition"></router-view>
+
         </transition>
     </div>
 </template>
 
 <script>
     import FileView from "./components/view/FileView";
-
+    import {mapState} from 'vuex';
     export default {
         name: 'app',
         components: {
@@ -23,7 +24,7 @@
 
         },
         computed:{
-
+            ...mapState(['active_panel_index'])
         }
 
     }

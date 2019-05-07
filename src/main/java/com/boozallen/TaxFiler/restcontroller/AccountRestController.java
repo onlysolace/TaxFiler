@@ -22,4 +22,10 @@ public class AccountRestController {
     public JsonNode query(@RequestBody ObjectNode data) throws IOException {
         return accountService.findTaxStatus(data.get("ssn").asText());
     }
+
+    @GetMapping("/test")
+    public Map<String, Object> hello(){
+        System.out.println("hey");
+        return Map.of("hi","hi");
+    }
 }
