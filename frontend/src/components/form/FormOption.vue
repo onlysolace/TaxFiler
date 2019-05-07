@@ -1,6 +1,7 @@
 <template>
     <div class="option" :class="[$root.theme,{selected:is_selected}]" @click="$emit('update:selected_option', label)">
-        <svg>
+        <checkmark-animation v-if="is_selected && animate"></checkmark-animation>
+        <svg v-else>
             <use :xlink:href="active_icon"></use>
         </svg>
         <span>{{label}}</span>
@@ -9,12 +10,15 @@
 </template>
 
 <script>
+    import CheckmarkAnimation from "../animation/CheckmarkAnimation";
     export default {
         name: "form-option",
+        components: {CheckmarkAnimation},
         props: {
             icon: String,
             label: String,
-            selected_option: String
+            selected_option: String,
+            animate: Boolean
         },
         computed: {
             active_icon() {
@@ -51,6 +55,7 @@
 
             &.selected {
                 background-color:#B9F6CA;
+                border-color:#0DC36A;
             }
         }
     }

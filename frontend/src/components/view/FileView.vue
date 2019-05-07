@@ -8,7 +8,7 @@
 
         <div class="row mb-5 d-flex">
             <transition :name="transition_name">
-                <keep-alive>
+                <keep-alive key="$root.active_panel_index">
                     <component :is="$root.panels[$root.active_panel_index]" ref="panel"></component>
                 </keep-alive>
             </transition>
@@ -37,6 +37,11 @@
     import TaxProficiencyPanel from '../../components/panel/TaxProficiencyPanel';
     import PersonalInformationIntroPanel from '../../components/panel/PersonalInformationIntroPanel';
     import PersonalInformationPanel from '../../components/panel/PersonalInformationPanel'
+    import LastYearTaxMethodPanel from '../../components/panel/LastYearTaxMethodPanel'
+    import MaritalStatusPanel from '../../components/panel/MaritalStatusPanel'
+    import PlaceholderPanel from '../../components/panel/PlaceholderPanel'
+    import ProcessingInformationPanel from '../../components/panel/ProcessingInformationPanel'
+    import ResultsPanel from '../../components/panel/ResultsPanel'
     import ProgressBar from "../../components/status/ProgressBar";
     import FormButton from "../../components/form/FormButton";
     import {mapGetters} from 'vuex'
@@ -51,7 +56,12 @@
             ProgressBar,
             TaxProficiencyPanel,
             PersonalInformationIntroPanel,
-            PersonalInformationPanel
+            PersonalInformationPanel,
+            LastYearTaxMethodPanel,
+            MaritalStatusPanel,
+            PlaceholderPanel,
+            ProcessingInformationPanel,
+            ResultsPanel
         },
         data(){
             return{

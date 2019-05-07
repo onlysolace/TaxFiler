@@ -7,9 +7,13 @@ export default new Vuex.Store({
     state: {
         theme: 'bootstrap',
         active_panel_index: 0,
-        panels: ['TaxProficiencyPanel', 'PersonalInformationIntroPanel', 'PersonalInformationPanel'],
+        panels: ['TaxProficiencyPanel', 'PersonalInformationIntroPanel', 'PersonalInformationPanel','LastYearTaxMethodPanel','MaritalStatusPanel','PlaceholderPanel','ProcessingInformationPanel','ResultsPanel'],
         panel_data: {},
-        ssn: ''
+        ssn: '',
+        first_name: '',
+        last_name: '',
+        middle_name: '',
+        date_of_birth:''
     },
     mutations: {
         next_panel(state) {
@@ -23,6 +27,18 @@ export default new Vuex.Store({
         },
         set_ssn(state, ssn) {
             state.ssn = ssn;
+        },
+        set_first_name(state, first_name){
+            state.first_name = first_name;
+        },
+        set_last_name(state, last_name){
+            state.last_name = last_name;
+        },
+        set_middle_name(state, middle_name){
+            state.middle_name = middle_name;
+        },
+        set_date_of_birth(state, date_of_birth){
+            state.date_of_birth = date_of_birth;
         }
     },
     actions: {},
