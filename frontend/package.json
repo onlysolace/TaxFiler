@@ -51,8 +51,6 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ],
-  "proxy": {
-    "/api": "http://localhost:6080"
-  }
+  ]
+
 }
