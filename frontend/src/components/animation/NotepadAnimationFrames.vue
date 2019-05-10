@@ -42,6 +42,8 @@
             active:{
                 immediate:true,
                 handler(nv, ov){
+                    console.log('watcher running with '+nv);
+
                     if(nv){
                         this.start_animation();
                     }
@@ -52,7 +54,7 @@
 
 
         },
-        destroyed(){
+        deactivated(){
             console.log('destroyed hook');
             clearInterval(this.interval_id);
         },

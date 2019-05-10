@@ -21,6 +21,7 @@
 </template>
 
 <script>
+    const axios = require('axios');
     import FormTitle from '../form/FormTitle';
     import FormOption from "../form/FormOption";
     import {panel_mixin} from "../../mixin";
@@ -39,7 +40,10 @@
             }
         },
         created(){
-
+            console.log('sending get request...');
+            axios.get('/test').then(response => {
+                console.log(response);
+            });
         },
         components: {FormOption, FormTitle}
     }

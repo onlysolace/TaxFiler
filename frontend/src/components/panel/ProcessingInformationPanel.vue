@@ -28,22 +28,32 @@
             return {
                 processing: true,
                 filing: true,
-                error:false
+                error:false,
+                timeout_id:''
             }
         },
         computed:{
             is_completed(){
                 return !this.processing && !this.filing && !this.error;
             },
-            ...mapState(['ssn'])
+            ...mapState(['ssn','first_name','last_name','middle_name','date_of_birth']),
+            tax_submission(){
+                return{
+                    ssn: this.ssn,
+                    first_name: this.first_name,
+                    last_name: this.last_name,
+                    middle_name: this.middle_name,
+                    date_of_birth: this.date_of_birth
+                }
+            }
         },
         activated(){
-            setTimeout(() => {
+            this.processing = true;
+            this.timeout_id = setTimeout(() => {
                 this.processing = false;
             }, 15000);
 
-
-            axios.post('http://localhost:8080/file',{ssn:this.ssn}).then(response => {
+            axios.post('/file',this.tax_submission).then(response => {
                 this.filing = false;
             }).catch(error => {
                 this.filing = false;
@@ -51,7 +61,8 @@
             });
         },
         deactivated(){
-            this.processing = true;
+            clearTimeout(this.timeout_id);
+            this.processing = false;
         }
     }
 </script>

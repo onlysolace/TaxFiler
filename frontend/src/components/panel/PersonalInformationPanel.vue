@@ -70,6 +70,7 @@
                         !this.file_locked &&
                         !this.has_filed &&
                         !this.ssn_not_found
+
             },
             ssn: {
                 get() {
@@ -117,14 +118,7 @@
         },
         watch: {
             ssn(nv, ov) {
-                console.log('watching running');
-                axios.post('http://localhost:8080/account/taxstatus/query', {ssn: nv}).then(response => {
-                    console.log(response);
-                    this.file_locked = response.data.file_locked;
-                    this.has_filed = response.data.has_filed;
-                }).catch(error => {
-                    this.ssn_not_found = true;
-                });
+                //Check for eligibility to file here. updates has_filed, file_locked, and ssn_not_found
             }
         }
     }
