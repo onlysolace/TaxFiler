@@ -58,5 +58,16 @@
                 border-color:#0DC36A;
             }
         }
+
+        &.blue{
+            border:1px solid #ccc;
+            box-shadow: 1px 2px 2px #ccc;
+            transition:.3s;
+
+            &:hover{
+                box-shadow: 0 0 0 #ccc;
+                border: 1px solid #227dae;
+            }
+        }
     }
 </style>

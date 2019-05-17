@@ -33,6 +33,11 @@
             is_completed(){
                 return this.selected_option != null;
             }
+        },
+        watch:{
+            selected_option(nv,ov){
+                this.$store.commit('set_filing_status', nv);
+            }
         }
     }
 </script>

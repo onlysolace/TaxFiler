@@ -12,6 +12,7 @@ import java.util.Map;
 @Service
 public class AccountService {
 
+    /*
     public JsonNode findTaxStatus(String ssn) throws IOException {
         System.out.println("find account running");
         RestTemplate restTemplate = new RestTemplate();
@@ -19,4 +20,7 @@ public class AccountService {
                 Map.of("ssn", ssn), String.class);
         return new ObjectMapper().readTree(response.getBody());
     }
+
+
+     */
 }

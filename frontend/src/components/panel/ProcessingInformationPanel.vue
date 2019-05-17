@@ -22,7 +22,7 @@
 
     export default {
         name: "processing-information-panel",
-        components: {NotepadAnimationFrames, NotepadAnimation},
+        components: {NotepadAnimationFrames},
         mixins:[panel_mixin],
         data() {
             return {
@@ -36,14 +36,16 @@
             is_completed(){
                 return !this.processing && !this.filing && !this.error;
             },
-            ...mapState(['ssn','first_name','last_name','middle_name','date_of_birth']),
+            ...mapState(['ssn','first_name','last_name','middle_name','date_of_birth','filing_status','income']),
             tax_submission(){
                 return{
                     ssn: this.ssn,
                     first_name: this.first_name,
                     last_name: this.last_name,
                     middle_name: this.middle_name,
-                    date_of_birth: this.date_of_birth
+                    date_of_birth: this.date_of_birth,
+                    filing_status: this.filing_status,
+                    income: this.income
                 }
             }
         },

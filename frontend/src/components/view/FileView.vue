@@ -9,11 +9,12 @@
         <div class="row mb-5 d-flex">
             <transition :name="transition_name">
                 <keep-alive key="$root.active_panel_index">
-                    <component :is="$root.panels[$root.active_panel_index]" ref="panel"></component>
+                    <component :is="$root.active_panels[$root.active_panel_index]" ref="panel"></component>
                 </keep-alive>
             </transition>
 
         </div>
+
         <div class="row mb-1">
             <hr class="col">
         </div>
@@ -41,9 +42,13 @@
     import MaritalStatusPanel from '../../components/panel/MaritalStatusPanel'
     import PlaceholderPanel from '../../components/panel/PlaceholderPanel'
     import ProcessingInformationPanel from '../../components/panel/ProcessingInformationPanel'
+    import W2IntroPanel from '../../components/panel/W2IntroPanel'
+    import W2ConfirmationPanel from '../../components/panel/W2ConfirmationPanel'
     import ResultsPanel from '../../components/panel/ResultsPanel'
     import ProgressBar from "../../components/status/ProgressBar";
     import FormButton from "../../components/form/FormButton";
+    import W2EmployerIdPanel from '../../components/panel/W2EmployerIdPanel'
+    import W2Panel from '../../components/panel/W2Panel'
     import {mapGetters} from 'vuex'
 
     export default {
@@ -61,7 +66,11 @@
             MaritalStatusPanel,
             PlaceholderPanel,
             ProcessingInformationPanel,
-            ResultsPanel
+            ResultsPanel,
+            W2IntroPanel,
+            W2ConfirmationPanel,
+            W2EmployerIdPanel,
+            W2Panel
         },
         data(){
             return{
@@ -83,6 +92,7 @@
             },
             move_main_menu(){
                 this.$emit('update:app_transition', 'prev-transition');
+                this.$store.commit('reset_panel_index');
                 this.$router.push('/');
 
             }

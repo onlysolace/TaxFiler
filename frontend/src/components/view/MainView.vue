@@ -11,12 +11,15 @@
                 </use>
             </svg>
         </div>
-        <div class="row">
+        <div class="row d-flex align-items-center">
             <div class="col-auto mt-3">
             <form-button type="secondary">view my return status</form-button>
             </div>
             <div class="col-auto mt-3">
                 <form-button type="primary" @click.native="move_file_view">file a tax return</form-button>
+            </div>
+            <div class="col-auto mt-3">
+                <button class="settings-button" @click="move_settings_view"><svg><use :xlink:href="$resource('icons.svg')+'#settings'"></use></svg></button>
             </div>
         </div>
     </div>
@@ -33,6 +36,10 @@
             move_file_view(){
                 this.$emit('update:app_transition','next-transition');
                 this.$router.push('/file');
+            },
+            move_settings_view(){
+                this.$emit('update:app_transition', 'next-transition');
+                this.$router.push('/settings');
             }
         },
         components:{FormButton}
@@ -40,8 +47,33 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+
     .main-view{
         user-select:none;
     }
+
+    .settings-button{
+        background-color:transparent;
+        border:none;
+        outline:none;
+        padding:5px;
+        transition:.3s;
+        border-radius:3px;
+
+        &:hover{
+            background-color:#EEEEEE;
+
+            >svg{
+                color:#BDBDBD;
+            }
+        }
+
+        > svg{
+            color:#757575;
+            height:25px;
+            width:25px;
+        }
+    }
+
 </style>
