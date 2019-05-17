@@ -18,10 +18,10 @@ public class AccountRestController {
     @Autowired
     private AccountService accountService;
 
-    @PostMapping(value = "/account/taxstatus/query", produces = "application/json")
+    /*@PostMapping(value = "/account/taxstatus/query", produces = "application/json")
     public JsonNode query(@RequestBody ObjectNode data) throws IOException {
         return accountService.findTaxStatus(data.get("ssn").asText());
-    }
+    }*/
 
     @GetMapping("/test")
     public Map<String, Object> hello(){

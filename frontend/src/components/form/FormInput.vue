@@ -1,6 +1,6 @@
 <template>
     <div class="input-container">
-        <div class="input-group" v-if="$root.theme == 'bootstrap'">
+        <div class="input-group" >
             <div class="input-group-prepend">
                 <span class="input-group-text">{{label}}</span>
             </div>
