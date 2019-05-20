@@ -16,7 +16,7 @@
         </div>
         <div class="row mb-3">
             <div class="col-auto mb-3" v-for="panel in all_panels" :key="panel">
-                <form-option-button class="d-flex align-items-center" :class="{active:active_panels.includes(panel), removable:removable_panels.includes(panel)}" @click.native="$store.dispatch('toggle_panel',{panel:panel})">
+                <form-option-button class="d-flex align-items-center" :class="{active:active_panels.includes(panel), removable:removable_panels.includes(panel)}" @click.native="toggle_panel(panel)">
                     <svg :class="{visible:active_panels.includes(panel)}" class="mr-2">
                         <use :xlink:href="$resource('icons.svg') + '#check'"></use>
                     </svg>
@@ -44,12 +44,20 @@
                 this.$emit('update:app_transition', 'prev-transition');
                 this.$router.push('/');
 
+            },
+            toggle_panel(panel){
+                if(this.required_panels.includes(panel)){
+                    return;
+                }
+                this.$store.commit('update_panel_data',{panel:panel,data:{removed:this.active_panels.includes(panel)}});
+                this.$store.commit('reset_panel_index');
+
             }
 
         },
         computed:{
             ...mapState(['available_themes','theme','all_panels']),
-            ...mapGetters(['active_panels','removable_panels'])
+            ...mapGetters(['active_panels','removable_panels','required_panels'])
         }
     }
 </script>

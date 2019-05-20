@@ -17,6 +17,7 @@ export default new Vuex.Store({
         date_of_birth: '',
         filing_status:'',
         income:''
+
     },
     mutations: {
         next_panel(state) {
@@ -26,7 +27,8 @@ export default new Vuex.Store({
             state.active_panel_index--;
         },
         update_panel_data(state, payload) {
-            Vue.set(state.panel_data, payload.panel, Object.assign(state.panel_data[payload.panel] || {}, payload.data));
+
+            Vue.set(state.panel_data, payload.panel,  {...state.panel_data[payload.panel], ...payload.data});
         },
         set_ssn(state, ssn) {
             state.ssn = ssn;
@@ -74,7 +76,12 @@ export default new Vuex.Store({
     },
     getters: {
         active_panels: state => {
-            return state.all_panels.filter(panel => !state.panel_data[panel] || !state.panel_data[panel].removed);
+            console.log('active_panels getters running');
+            return state.all_panels.filter(panel => {
+                console.log('examining: '+panel);
+                console.log('data: '+JSON.stringify(state.panel_data[panel]));
+                return !state.panel_data[panel] || !state.panel_data[panel].removed
+            });
         },
         has_next_panel: (state, getters) => {
             return state.active_panel_index + 1 < getters.active_panels.length;
@@ -86,7 +93,7 @@ export default new Vuex.Store({
             return getters.active_panels[state.active_panel_index];
         },
         can_continue: (state, getters) => {
-            return getters.has_next_panel && state.panel_data[getters.active_panel_name] && state.panel_data[getters.active_panel_name].is_completed;
+            return getters.has_next_panel && state.panel_data.hasOwnProperty(getters.active_panel_name) && state.panel_data[getters.active_panel_name].hasOwnProperty('is_completed') && state.panel_data[getters.active_panel_name].is_completed;
         },
         removable_panels: (state, getters) => {
 
