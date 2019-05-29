@@ -4,7 +4,7 @@
         <div class="row d-flex justify-content-center">
 
             <div class="col-auto no-gutters mt-3">
-                <form-option animate :icon="$resource('icons.svg') + '#space'" label="Booz Allen Tax" :selected_option.sync="selected_option"></form-option>
+                <form-option animate :icon="$resource('icons.svg') + '#space'" label="Yosemite Tax Service" :selected_option.sync="selected_option"></form-option>
             </div>
             <div class="col-auto no-gutters mt-3">
             <form-option animate :icon="$resource('icons.svg') + '#computer'" label="Other Tax Software" :selected_option.sync="selected_option"></form-option>

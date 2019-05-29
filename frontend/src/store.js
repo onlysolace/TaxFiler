@@ -9,7 +9,14 @@ export default new Vuex.Store({
         available_themes: ['bootstrap', 'blue'],
         active_panel_index: 0,
         all_panels: ['TaxProficiencyPanel', 'PersonalInformationIntroPanel', 'PersonalInformationPanel', 'LastYearTaxMethodPanel', 'MaritalStatusPanel', 'W2IntroPanel','W2ConfirmationPanel','W2EmployerIdPanel','W2Panel', 'ProcessingInformationPanel', 'ResultsPanel'],
-        panel_data: {},
+        panel_data: {
+            W2EmployerIdPanel:{
+                skipped:true
+            },
+            W2Panel:{
+                skipped:true
+            }
+        },
         ssn: '',
         first_name: '',
         last_name: '',
@@ -76,11 +83,8 @@ export default new Vuex.Store({
     },
     getters: {
         active_panels: state => {
-            console.log('active_panels getters running');
             return state.all_panels.filter(panel => {
-                console.log('examining: '+panel);
-                console.log('data: '+JSON.stringify(state.panel_data[panel]));
-                return !state.panel_data[panel] || !state.panel_data[panel].removed
+                return !state.panel_data[panel] || (!state.panel_data[panel].removed && !state.panel_data[panel].skipped)
             });
         },
         has_next_panel: (state, getters) => {
@@ -96,7 +100,6 @@ export default new Vuex.Store({
             return getters.has_next_panel && state.panel_data.hasOwnProperty(getters.active_panel_name) && state.panel_data[getters.active_panel_name].hasOwnProperty('is_completed') && state.panel_data[getters.active_panel_name].is_completed;
         },
         removable_panels: (state, getters) => {
-
             return state.all_panels.filter(panel => !getters.required_panels.includes(panel));
         },
         required_panels: () => {

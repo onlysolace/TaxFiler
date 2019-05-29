@@ -9,7 +9,7 @@
         <div class="row mb-5 d-flex">
             <transition :name="transition_name">
                 <keep-alive key="$root.active_panel_index">
-                    <component :is="$root.active_panels[$root.active_panel_index]" ref="panel" :key="$root.active_panel_index"></component>
+                    <component :is="$root.active_panels[$root.active_panel_index]" ref="panel" :key="$root.active_panels[$root.active_panel_index]"></component>
                 </keep-alive>
             </transition>
 

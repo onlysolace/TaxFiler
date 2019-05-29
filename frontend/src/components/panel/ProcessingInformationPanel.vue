@@ -55,6 +55,7 @@
                 this.processing = false;
             }, 15000);
 
+            console.log('activated running');
             axios.post('/file',this.tax_submission).then(response => {
                 this.filing = false;
             }).catch(error => {
