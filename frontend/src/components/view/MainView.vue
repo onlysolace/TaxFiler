@@ -1,14 +1,12 @@
 <template>
     <div class="main-view d-flex align-items-center flex-column">
         <div class="row mb-3 mt-3">
-            <h5 class="col-12">Welcome to Booz Allen Tax,</h5>
+            <h5 class="col-12">Welcome to Yosemite Tax Service,</h5>
             <h6 class="col-12">what would you like to do?</h6>
         </div>
         <div class="row">
             <svg>
-                <use :xlink:href="$resource('icons.svg')+'#space'">
-
-                </use>
+                <use :xlink:href="$resource('icons.svg')+'#space'"></use>
             </svg>
         </div>
         <div class="row d-flex align-items-center">

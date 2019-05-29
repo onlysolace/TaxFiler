@@ -32,6 +32,23 @@
                 return this.selected_option != null;
             }
         },
+        watch:{
+            selected_option(nv, ov){
+                    this.$store.commit('update_panel_data',{
+                        panel:'W2EmployerIdPanel',
+                        data:{
+                            skipped:!nv.startsWith("Work")
+                        }
+                    });
+                    this.$store.commit('update_panel_data',{
+                        panel:'W2Panel',
+                        data:{
+                            skipped:!nv.startsWith("Work")
+                        }
+                    })
+
+            }
+        },
         mixins: [panel_mixin]
     }
 </script>
